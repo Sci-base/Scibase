@@ -1,0 +1,501 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="SciBase makes Nigerian secondary-school science easier to see, try and understand.">
+  <meta name="theme-color" content="#123B5D">
+  <link rel="icon" href="logo.png">
+  <title>SciBase | Redefining Science Education</title>
+
+  <style>
+    :root {
+      --navy: #123B5D;
+      --logo-blue: #24669A;
+      --teal: #24B8AA;
+      --soft: #F5F9FA;
+      --ink: #1B2D3A;
+      --muted: #637885;
+      --white: #FFFFFF;
+      --line: #DCE8ED;
+      --shadow: 0 18px 45px rgba(18, 59, 93, 0.12);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Arial, sans-serif;
+      color: var(--ink);
+      background: var(--white);
+      line-height: 1.55;
+    }
+
+    img { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+    .wrap { width: min(1120px, calc(100% - 40px)); margin: auto; }
+
+    /* HEADER */
+    .site-header {
+      position: fixed;
+      inset: 0 0 auto;
+      z-index: 50;
+      height: 100px;
+      display: flex;
+      align-items: center;
+      padding: 0 28px;
+      background: rgba(255, 255, 255, 0.97);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(12px);
+    }
+
+    .brand {
+      margin-right: auto;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+      gap: 0;
+    }
+
+    .brand img {
+      width: 265px;
+      height: 62px;
+      object-fit: contain;
+      object-position: left center;
+    }
+
+    .brand-tagline {
+      margin: -4px 0 0 7px;
+      color: var(--logo-blue);
+      font-size: 12px;
+      font-weight: 650;
+      letter-spacing: 0.055em;
+      text-transform: lowercase;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 27px;
+      font-size: 0.92rem;
+      font-weight: 750;
+    }
+
+    .nav-links a:hover { color: var(--teal); }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 13px 22px;
+      border-radius: 999px;
+      background: var(--teal);
+      color: #062F31;
+      font-weight: 900;
+      transition: transform 0.2s ease;
+    }
+
+    .button:hover { transform: translateY(-2px); }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      align-items: center;
+      padding: 132px 0 42px;
+      background: var(--soft);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 40% 60%;
+      gap: 42px;
+      align-items: center;
+    }
+
+    h1, h2 { font-family: "Arial Narrow", "Segoe UI", Arial, sans-serif; }
+
+    .hero h1 {
+      margin: 0 0 30px;
+      color: var(--navy);
+      font-size: clamp(3rem, 5.6vw, 5.25rem);
+      font-weight: 750;
+      line-height: 0.98;
+      letter-spacing: -0.048em;
+    }
+
+    .hero h1 span {
+      display: block;
+      color: var(--teal);
+    }
+
+    .hero-image img {
+      width: 100%;
+      height: 640px;
+      object-fit: cover;
+      border-radius: 26px;
+      box-shadow: var(--shadow);
+    }
+
+    /* SHARED */
+    section { padding: 84px 0; }
+
+    .kicker {
+      color: var(--teal);
+      font-size: 0.76rem;
+      font-weight: 900;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .section-heading {
+      max-width: 760px;
+      margin: 0 auto 38px;
+      text-align: center;
+    }
+
+    .section-heading h2,
+    .copy h2 {
+      margin: 10px 0 13px;
+      color: var(--navy);
+      font-size: clamp(2.25rem, 4.5vw, 3.8rem);
+      line-height: 1.04;
+      letter-spacing: -0.04em;
+    }
+
+    .section-heading p,
+    .copy p {
+      color: var(--muted);
+      font-size: 1.07rem;
+    }
+
+    /* WHY */
+    .why-copy {
+      max-width: 760px;
+      margin: auto;
+      text-align: center;
+    }
+
+    .why-copy h2 {
+      margin: 8px 0 10px;
+      color: var(--navy);
+      font-size: clamp(2.35rem, 4.5vw, 3.9rem);
+      line-height: 1.03;
+      letter-spacing: -0.04em;
+    }
+
+    .why-copy p { margin: 0; color: var(--muted); font-size: 1.08rem; }
+
+    /* PRACTICAL */
+    .soft-section { background: var(--soft); }
+
+    .split {
+      display: grid;
+      grid-template-columns: 1.08fr 0.92fr;
+      gap: 56px;
+      align-items: center;
+    }
+
+    .visual img {
+      width: 100%;
+      height: 470px;
+      object-fit: cover;
+      border-radius: 24px;
+      box-shadow: var(--shadow);
+    }
+
+    /* SUBJECTS */
+    .subjects {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .subject {
+      display: block;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      background: var(--white);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .subject:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow);
+    }
+
+    .subject img {
+      width: 100%;
+      height: 255px;
+      object-fit: cover;
+    }
+
+    .subject-content { padding: 22px; }
+
+    .subject h3 {
+      margin: 0 0 7px;
+      color: var(--navy);
+      font-size: 1.4rem;
+    }
+
+    .subject p { margin: 0; color: var(--muted); font-weight: 650; }
+
+    /* FEATURED TITRATION */
+    .feature {
+      display: grid;
+      grid-template-columns: 55% 45%;
+      overflow: hidden;
+      border-radius: 26px;
+      background: var(--navy);
+      color: var(--white);
+    }
+
+    .feature img {
+      width: 100%;
+      height: 460px;
+      object-fit: cover;
+    }
+
+    .feature-copy {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 48px;
+    }
+
+    .feature-copy .kicker { color: #8DE6DE; }
+
+    .feature-copy h2 {
+      margin: 10px 0 13px;
+      color: var(--white);
+      font-size: clamp(2.4rem, 4.5vw, 3.8rem);
+      line-height: 1.02;
+    }
+
+    .feature-copy p { margin: 0 0 25px; color: #D5E4EC; }
+    .light-button { align-self: flex-start; background: var(--white); color: var(--navy); }
+
+    /* CURRICULUM */
+    .curriculum {
+      padding: 38px;
+      border-radius: 22px;
+      background: var(--soft);
+      text-align: center;
+    }
+
+    .curriculum h2 {
+      margin: 0;
+      color: var(--navy);
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      line-height: 1.04;
+    }
+
+    .badges {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 22px;
+    }
+
+    .badges span {
+      padding: 10px 15px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: var(--white);
+      color: var(--navy);
+      font-weight: 800;
+    }
+
+    /* CTA */
+    .cta { background: var(--navy); color: var(--white); text-align: center; }
+
+    .cta h2 {
+      margin: 0 0 6px;
+      font-size: clamp(2.8rem, 6vw, 5rem);
+      line-height: 0.98;
+    }
+
+    .cta p {
+      margin: 0 0 25px;
+      color: #8DE6DE;
+      font-size: 1.5rem;
+      font-weight: 800;
+    }
+
+    /* FOOTER */
+    footer { padding: 38px 25px 22px; background: #092942; color: #C9DCE6; }
+    .footer-row { display: flex; justify-content: space-between; align-items: center; gap: 25px; }
+    .footer-row img { width: 180px; padding: 3px; border-radius: 7px; background: var(--white); }
+    .copyright { margin-top: 25px; padding-top: 16px; border-top: 1px solid rgba(255,255,255,0.13); color: #91AEBE; font-size: 0.83rem; }
+
+    /* MOBILE */
+    @media (max-width: 880px) {
+      .nav-links a:not(.button) { display: none; }
+      .hero-grid, .split, .subjects, .feature { grid-template-columns: 1fr; }
+      .hero { padding-top: 116px; }
+      .hero-image { order: -1; }
+      .hero-image img { height: 390px; }
+      .hero h1 { font-size: 3.45rem; }
+      .feature img { height: 340px; }
+    }
+
+    @media (max-width: 540px) {
+      .site-header { height: 88px; padding: 0 12px; }
+      .brand img { width: 178px; height: 48px; }
+      .brand-tagline { margin-top: -3px; font-size: 9px; }
+      .nav-links { gap: 7px; }
+      .button { padding: 11px 15px; }
+      .wrap { width: min(100% - 28px, 1120px); }
+      section { padding: 66px 0; }
+      .hero h1 { font-size: 2.8rem; }
+      .hero-image img { height: 295px; }
+      .feature-copy { padding: 29px; }
+      .footer-row { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="site-header">
+    <a class="brand" href="#home" aria-label="SciBase homepage">
+      <img src="logo.png" alt="SciBase logo">
+      <span class="brand-tagline">redefining science education.</span>
+    </a>
+
+    <nav class="nav-links" aria-label="Main navigation">
+      <a href="#why">Why SciBase</a>
+      <a href="#subjects">Subjects</a>
+      <a href="#experiment">Experiment</a>
+      <a class="button" href="#join">Join Us</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="wrap hero-grid">
+        <div>
+          <h1>
+            Science was never meant to be memorised.
+            <span>It was meant to be explored.</span>
+          </h1>
+          <a class="button" href="#subjects">Start Exploring</a>
+        </div>
+
+        <div class="hero-image">
+          <img src="hero.png" alt="Secondary-school students building a simple electrical circuit">
+        </div>
+      </div>
+    </section>
+
+    <section id="why">
+      <div class="wrap why-copy">
+        <div class="kicker">Why SciBase?</div>
+        <h2>Science should make sense.</h2>
+        <p>Built for students who want to understand, not just remember.</p>
+      </div>
+    </section>
+
+    <section class="soft-section">
+      <div class="wrap split">
+        <div class="visual">
+          <img src="practical.png" alt="Simple secondary-school practical science materials">
+        </div>
+
+        <div class="copy">
+          <div class="kicker">Practical science</div>
+          <h2>Don't just read it. Try it.</h2>
+          <p>A bottle. A leaf. Some water. One good question.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="subjects">
+      <div class="wrap">
+        <div class="section-heading">
+          <div class="kicker">Pick your curiosity</div>
+          <h2>What are we exploring?</h2>
+        </div>
+
+        <div class="subjects">
+          <a class="subject" href="#biology" aria-label="Explore Biology">
+            <img src="biology.png" alt="Bean germination and a basic school microscope">
+            <div class="subject-content">
+              <h3>Biology</h3>
+              <p>How does a tiny seed become a plant?</p>
+            </div>
+          </a>
+
+          <a class="subject" href="#experiment" aria-label="Explore Chemistry">
+            <img src="chemistry.png" alt="Acid-base titration using a burette, conical flask and white tile">
+            <div class="subject-content">
+              <h3>Chemistry</h3>
+              <p>Why did it suddenly turn pink?</p>
+            </div>
+          </a>
+
+          <a class="subject" href="#physics" aria-label="Explore Physics">
+            <img src="physics.png" alt="A battery, wires, glowing bulb, magnet and pendulum">
+            <div class="subject-content">
+              <h3>Physics</h3>
+              <p>Why does the bulb light up?</p>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section id="experiment">
+      <div class="wrap">
+        <div class="feature">
+          <img src="chemistry.png" alt="Secondary-school acid-base titration practical">
+
+          <div class="feature-copy">
+            <div class="kicker">Featured experiment</div>
+            <h2>Why did it turn pink?</h2>
+            <p>One drop can change everything.</p>
+            <a class="button light-button" href="mailto:helloscibase@gmail.com?subject=SciBase%20Titration%20Lesson">Explore the experiment</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <div class="curriculum">
+          <h2>Built around what you learn in school.</h2>
+          <div class="badges">
+            <span>WAEC</span>
+            <span>NECO</span>
+            <span>JAMB</span>
+            <span>Secondary School Science</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta" id="join">
+      <div class="wrap">
+        <h2>Still curious?</h2>
+        <p>Good.</p>
+        <a class="button" href="mailto:helloscibase@gmail.com?subject=Join%20SciBase">Join SciBase</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-row">
+      <img src="logo.png" alt="SciBase logo">
+      <a href="mailto:helloscibase@gmail.com">helloscibase@gmail.com</a>
+    </div>
+    <div class="copyright">© <span id="year"></span> SciBase. Science that makes sense.</div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
